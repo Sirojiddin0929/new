@@ -20,8 +20,20 @@
   },
   "homepage": "https://github.com/Sirojiddin0929/new#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "commitlint": "^20.1.0",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
     "grammy": "^1.38.3",
-    "nodemon": "^3.1.10"
+    "husky": "^9.1.7",
+    "jsonwebtoken": "^9.0.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.19.3",
+    "nodemailer": "^7.0.10",
+    "nodemon": "^3.1.10",
+    "otp-generators": "^1.0.3",
+    "zod": "^4.1.12"
   }
 }
