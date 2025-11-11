@@ -1,8 +1,8 @@
 import express from 'express';
 import path from 'node:path';
-import { dbconnect } from './db/index.js';
-import {config} from "./config/index.js"
-import MainRouter from './routers/index.js';
+import { dbconnect } from './src/db/index.js';
+import {config} from "./src/config/index.js"
+import MainRouter from './src/routes/index.js';
 import cookieParser from "cookie-parser"
 import methodOverride from 'method-override'; 
 import session from 'express-session';
