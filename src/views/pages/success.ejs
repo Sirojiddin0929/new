@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+  <title>Success!</title>
+</head>
+<body class="container py-4">
+  <header><%- include('../partials/header'); %></header>
+  <main class="flex-grow-1">
+    <div class="bg-light p-5 rounded-3 mb-4 shadow-sm text-center">
+      <h1 class="mb-4 text-success">Operation Successful!</h1>
+      <p class="lead"><%= message %></p>
+      <a href="<%= redirectUrl %>" class="btn btn-primary mt-3"><%= redirectText %></a>
+    </div>
+  </main>
+  <footer class="mt-5"><%- include('../partials/footer'); %></footer>
+</body>
+</html>
