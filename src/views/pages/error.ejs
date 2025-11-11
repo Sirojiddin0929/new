@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+  <title>Error</title>
+</head>
+<body class="container py-4">
+  <header><%- include('../partials/header'); %></header>
+  <main class="flex-grow-1">
+    <div class="bg-light p-5 rounded-3 mb-4 shadow-sm">
+      <h1 class="mb-4 text-danger">Error</h1>
+      <p class="lead">Something went wrong:</p>
+      <p class="alert alert-danger"><%= typeof message !== 'undefined' ? message : 'An unexpected error occurred.' %></p>
+      <a href="/blog" class="btn btn-primary">Go to Blogs</a>
+    </div>
+  </main>
+  <footer class="mt-5"><%- include('../partials/footer'); %></footer>
+</body>
+</html>

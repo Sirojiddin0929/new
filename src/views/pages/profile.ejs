@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+  <title>Profile</title>
+</head>
+
+<body class="container py-4">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  <main class="flex-grow-1">
+    <div class="container-lg px-4 py-5 bg-light rounded-3 shadow-sm">
+      <h1 class="display-4 fw-bold mb-3 text-primary">Your Profile</h1>
+
+      <% if (typeof user !== 'undefined' && user) { %>
+        <div class="row">
+          <div class="col-md-6">
+            <p class="lead"><strong>Username:</strong> <%= user.username %></p>
+            <p class="lead"><strong>Email:</strong> <%= user.email %></p>
+            <p class="lead"><strong>Role:</strong> <%= user.role %></p>
+            <% if (user.createdAt) { %>
+              <p class="text-muted">Member Since: <%= new Date(user.createdAt).toLocaleDateString('en-GB', {
+                  year: 'numeric', month: 'long', day: 'numeric'
+              }) %></p>
+            <% } %>
+            <!-- Add more profile details as needed -->
+          </div>
+          <div class="col-md-6 text-end">
+            <!-- Add an edit profile button or other actions -->
+            <a href="/profile/edit" class="btn btn-secondary me-2">Edit Profile</a>
+            <form action="/logout" method="POST" class="d-inline">
+              <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+          </div>
+        </div>
+      <% } else { %>
+        <div class="alert alert-warning" role="alert">
+          Please log in to view your profile. <a href="/login">Login here</a>
+        </div>
+      <% } %>
+    </div>
+  </main>
+
+  <footer class="mt-5">
+    <%- include('../partials/footer'); %>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+  <title>Home</title>
+</head>
+<body class="container py-4">
+  <header><%- include('../partials/header'); %></header>
+  <main class="flex-grow-1">
+    <div class="bg-light p-5 rounded-3 mb-4 shadow-sm text-center">
+      <h1 class="mb-4 text-primary">Welcome to the Super App Blog!</h1>
+      <p class="lead">This is your go-to place for amazing articles and insights.</p>
+      <hr class="my-4">
+      <p>Explore our latest blog posts or create your own!</p>
+      <a class="btn btn-primary btn-lg" href="/blog" role="button">View Blogs</a>
+      <a class="btn btn-success btn-lg" href="/blog/new" role="button">Create Blog</a>
+    </div>
+  </main>
+  <footer class="mt-5"><%- include('../partials/footer'); %></footer>
+</body>
+</html>

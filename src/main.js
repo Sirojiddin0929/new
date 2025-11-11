@@ -1,20 +1,38 @@
-import { Bot } from "grammy";
-import "dotenv/config"
+import express from 'express';
+import path from 'node:path';
+import { dbconnect } from './db/index.js';
+import {config} from "./config/index.js"
+import MainRouter from './routers/index.js';
+import cookieParser from "cookie-parser"
+import methodOverride from 'method-override'; 
+import session from 'express-session';
 
-const BOT_TOKEN=process.env.BOT_TOKEN
+const app = express();
+app.use(session({
+  secret: config.session.secret,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false } 
+}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
+app.set('views', path.join(import.meta.dirname, 'views'));
+app.use(methodOverride('_method'));
+app.use(cookieParser())
 
-const bot=new Bot(BOT_TOKEN)
+app.use('/', MainRouter)
+const bootstrap = async () => {
+  try {
+    await dbconnect();
 
-bot.command("start",(ctx)=>{
-    ctx.reply(`Assalomu aleykum :) ${ctx.message.from.username}`,{
-        parse_mode:"HTML",
-        reply_to_message:25,
-        reply_markup:{
-            force_reply:true
-        }
-    })})
-    
-bot.hears("pizza")
-bot.on("message",(ctx)=>ctx.reply("Hi there"))
+    app.listen(8080, () => {
+      console.log('Server is listening on port 8080');
+    });
+  } catch (e) {
+    console.error(e);
+    throw new Error(e);
+  }
+};
 
-bot.start()
+bootstrap();

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+  <title>Verify Account</title>
+</head>
+
+<body class="container py-4">
+
+  <header>
+    <%- include('../partials/header'); %>
+  </header>
+
+  <main class="flex-grow-1 d-flex align-items-center justify-content-center">
+    <div class="card shadow-sm p-4" style="max-width: 450px; width: 100%;">
+      <h2 class="card-title text-center mb-4 text-primary">Verify Your Account</h2>
+      <p class="text-center text-muted">A verification code has been sent to your email address.</p>
+
+      <form action="/verify" method="POST">
+        <div class="mb-3">
+          <label for="otp" class="form-label">Enter Verification Code (OTP)</label>
+          <input type="text" class="form-control" id="otp" name="otp" required maxlength="6" pattern="\d{6}"
+            placeholder="e.g., 123456">
+          <small class="form-text text-muted">The code is usually 6 digits long.</small>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Verify Account</button>
+      </form>
+
+      <% if (typeof message !== 'undefined' && message) { %>
+        <div class="alert alert-success mt-3" role="alert">
+          <%= message %>
+        </div>
+      <% } %>
+      <% if (typeof error !== 'undefined' && error) { %>
+        <div class="alert alert-danger mt-3" role="alert">
+          <%= error %>
+        </div>
+      <% } %>
+    </div>
+  </main>
+
+  <footer class="mt-5">
+    <%- include('../partials/footer'); %>
+  </footer>
+
+</body>
+
+</html>
